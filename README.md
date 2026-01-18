@@ -43,8 +43,6 @@ DeviceFileEvents
 
 ### 2. Queried the `DeviceProcessEvents` Table
 
-Searched for any `ProcessCommandLine` that contained the string "tor-browser-windows-x86_64-portable-14.0.1.exe". Based on the logs returned, at `2024-11-08T22:16:47.4484567Z`, an employee on the "threat-hunt-lab" device ran the file `tor-browser-windows-x86_64-portable-14.0.1.exe` from their Downloads folder, using a command that triggered a silent installation.
-
 Investigating into the `ProcessCommandLine` logs identified the specific methods of installation. At `2026-01-09T16:11:47.8795211Z`, the user “ianwin11pro” executed the file `tor-browser-windows-x86_64-portable-15.0.3.exe` located in the Downloads folder on the “ian-win11pro” device. Notably, the process was initiated using command-line switches designed to perform a silent installation, effectively obscuring the setup process."
 
 **Query:**
@@ -77,8 +75,6 @@ DeviceProcessEvents
 ---
 
 ### 4. Queried the `DeviceNetworkEvents` Table for Successful Tor Network Connections
-
-Searched for any indication the TOR browser was used to establish a connection using any of the known TOR ports. At `2024-11-08T22:18:01.1246358Z`, an employee on the "threat-hunt-lab" device successfully established a connection to the remote IP address `176.198.159.33` on port `9001`. The connection was initiated by the process `tor.exe`, located in the folder `c:\users\employee\desktop\tor browser\browser\torbrowser\tor\tor.exe`. There were a couple of other connections to sites over port `443`.
 
 Network logs confirm active Tor connectivity. At `2026-01-09T15:38:48.2269957Z`, user "ianwin11pro" on the “ian-win11pro” device established an initial connection to `23.92.34.118` on port `443`. This connection stemmed from the `tor.exe` binary located within the user's Desktop directory at `C:\Users\ianwin11pro\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe`. Subsequent outbound traffic was also recorded on port `9150`, `9001`, and `9030`.
 
